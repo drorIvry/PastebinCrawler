@@ -1,5 +1,5 @@
-# CreepyCrawley
-this crawler is kinda creepy
+# Pastebin Crawler
+It crawles pastebin
 ## Requirement
 - docker installed and configured.
 - clone/download this repo.
