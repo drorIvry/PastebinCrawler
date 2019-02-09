@@ -5,7 +5,7 @@ It crawles pastebin
 - clone/download this repo.
 
 ## Build
-run the following in this folder
+run the following in this folder (use sudo if needed)
 
 `docker build -t crawler .`
 
