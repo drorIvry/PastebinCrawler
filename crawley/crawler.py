@@ -39,3 +39,4 @@ class Crawler:
         soup = self.fetch_page(crawl_link)
         paste = PasteHandler.paste_parser(soup)
         self.db.insert(paste)
+        return paste

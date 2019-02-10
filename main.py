@@ -12,4 +12,3 @@ if __name__ == '__main__':
 
     crawler = Crawler(Config.URL, DBHandler())
     start_crawling(crawler)
-
