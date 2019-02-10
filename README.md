@@ -21,5 +21,5 @@ run the following:
 ## Manual Run
 in order to manually run this crawler simply do:
 
-`python Main.py`
+`python main.py`
 
