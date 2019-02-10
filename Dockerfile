@@ -7,4 +7,4 @@ RUN mkdir -p /app/log
 
 RUN pip install -r requirements.txt
 
-CMD [ "python", "/app/Main.py" ]
+CMD [ "python", "/app/main.py" ]
