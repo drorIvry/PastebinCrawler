@@ -8,6 +8,9 @@ from crawley.config import Config
 
 @httpretty.activate
 def test_crawler_fetch():
+    """
+    test a single page fetch.
+    """
     httpretty.register_uri(httpretty.GET, "http://google.com/",
                            body="this is google!")
     crawler = Crawler('http://google.com', DBHandler())
@@ -17,6 +20,9 @@ def test_crawler_fetch():
 
 @httpretty.activate
 def test_crawl_to_paste():
+    """
+    test a single paste crawl with minimized fixture HTML
+    """
     httpretty.register_uri(httpretty.GET, "http://google.com/",
                            body=crawler_resources.PASTE_RESPONSE)
     db = TinyDB(Config.DB_PATH)

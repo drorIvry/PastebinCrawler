@@ -6,6 +6,9 @@ import arrow
 
 
 def test_db_insert():
+    """
+    test a single insert to the test db.
+    """
     paste = Paste('test', 'test', 'test', arrow.now())
     db_handler = DBHandler()
     db_handler.insert(paste)
@@ -17,6 +20,9 @@ def test_db_insert():
 
 
 def test_db_double_insert():
+    """
+    test that if a record already exists in the db it will not be reinserted.
+    """
     paste = Paste('test', 'test', 'test', arrow.now())
     db_handler = DBHandler()
     db_handler.insert(paste)
