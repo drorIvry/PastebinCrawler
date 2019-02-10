@@ -17,14 +17,15 @@ class Crawler:
         self._url = url
         self.db = db_handler
 
-    def fetch_page(self):
-        code = requests.get(self._url)
+    @staticmethod
+    def fetch_page(url):
+        code = requests.get(url)
         plain = code.text
         code.raise_for_status()
         return BeautifulSoup(plain, 'html.parser')
 
     def crawl(self):
-        soup = self.fetch_page()
+        soup = self.fetch_page(self._url)
         menu = soup.find('div', {'id': 'menu_2'})
 
         for link in menu.findAll('a'):
@@ -35,6 +36,6 @@ class Crawler:
     def _crawl_to_paste(self, crawl_link: str):
         print('crawling to: {}'.format(crawl_link))
         logger.info('crawling to: {}'.format(crawl_link))
-        soup = self.fetch_page()
+        soup = self.fetch_page(crawl_link)
         paste = PasteHandler.paste_parser(soup)
         self.db.insert(paste)
