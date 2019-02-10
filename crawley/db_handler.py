@@ -8,16 +8,10 @@ logger = logging.getLogger(__name__)
 
 class DBHandler:
     """
-    this class holds a singleton instance of the DB connection.
+    this class holds a single instance of the DB connection.
     (throughout the entire run of the we'll hold a single DB connection.)
     """
     db_instance = None
-
-    def __new__(cls, *args, **kwargs):
-        if not DBHandler.db_instance:
-            DBHandler.db_instance = TinyDB(Config.DB_PATH)
-
-        return DBHandler
 
     @staticmethod
     def insert(data: Paste):
