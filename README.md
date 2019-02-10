@@ -23,3 +23,11 @@ in order to manually run this crawler simply do:
 
 `python main.py`
 
+
+## Lint
+lint via flake8
+`flake8`
+
+## Testing
+unit tests are made using pytest.
+all unit test are at `test/units`
