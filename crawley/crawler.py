@@ -17,9 +17,8 @@ class Crawler:
     def __init__(self, url):
         self._url = url
 
-    @staticmethod
-    def fetch_page(url: str):
-        code = requests.get(url)
+    def fetch_page(self):
+        code = requests.get(self._url)
         plain = code.text
         code.raise_for_status()
         return BeautifulSoup(plain, 'html.parser')
