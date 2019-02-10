@@ -24,7 +24,7 @@ class Crawler:
         return BeautifulSoup(plain, 'html.parser')
 
     def crawl(self):
-        soup = self.fetch_page(self._url)
+        soup = self.fetch_page()
         menu = soup.find('div', {'id': 'menu_2'})
 
         for link in menu.findAll('a'):
@@ -35,7 +35,7 @@ class Crawler:
     def _crawl_to_paste(self, crawl_link: str):
         print('crawling to: {}'.format(crawl_link))
         logger.info('crawling to: {}'.format(crawl_link))
-        soup = self.fetch_page(crawl_link)
+        soup = self.fetch_page()
         paste = PasteHandler.paste_parser(soup)
         db = DBHandler()
         db.insert(paste)
