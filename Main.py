@@ -1,6 +1,6 @@
 from crawley.config import Config
-from crawley.Crawler import Crawler
-from crawley.CrawlerExecutor import start_crawling
+from crawley.crawler import Crawler
+from crawley.crawler_executor import start_crawling
 import logging
 
 if __name__ == '__main__':

@@ -1,5 +1,5 @@
 
-class PasteScheme:
+class Paste:
     """
     This class represents a paste object,
     holding the paste attributes.
@@ -10,7 +10,7 @@ class PasteScheme:
         self._title = title
         self._date = date
 
-    def get_db_entry(self):
+    def get_db_record(self):
         return {
              'author': self._author,
              'title': self._title,

@@ -1,5 +1,6 @@
 import logging
 
+
 class Config:
     DB_PATH = 'data/db.json'
     URL = 'https://pastebin.com/'

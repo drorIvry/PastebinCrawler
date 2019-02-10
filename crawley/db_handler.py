@@ -1,6 +1,6 @@
 from tinydb import TinyDB, Query
 from crawley.config import Config
-from crawley.PasteScheme import PasteScheme
+from crawley.paste import Paste
 import logging
 
 logger = logging.getLogger(__name__)
@@ -20,18 +20,22 @@ class DBHandler:
         return DBHandler
 
     @staticmethod
-    def insert(data: PasteScheme):
+    def insert(data: Paste):
         """
         this methods will insert a new record to the DB,
         it will verify that an existing record of the same data doesn't exists,
         insert the new data and log the event accordingly.
         :param data: the PasteScheme dto insert.
         """
-        if not isinstance(data, PasteScheme):
+        if not isinstance(data, Paste):
             logger.error('invalid param: ', data)
-            raise Exception('invalid parameter at insert.')
+            raise TypeError('invalid parameter at insert.')
 
-        normalized_data = data.get_db_entry()
+        # create new DB connection if needed
+        if not DBHandler.db_instance:
+            DBHandler.db_instance = TinyDB(Config.DB_PATH)
+
+        normalized_data = data.get_db_record()
 
         query = Query()
         search = DBHandler.db_instance.search(

@@ -1,5 +1,5 @@
 import threading
-from crawley.Crawler import Crawler
+from crawley.crawler import Crawler
 from crawley.config import Config
 import logging
 

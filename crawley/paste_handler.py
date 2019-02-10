@@ -1,7 +1,7 @@
 import arrow
 import logging
 from dateutil.parser import parse
-from crawley.PasteScheme import PasteScheme
+from crawley.paste import Paste
 from crawley.config import Config
 from bs4 import BeautifulSoup
 logger = logging.getLogger(__name__)
@@ -13,7 +13,7 @@ class PasteHandler:
     extracting a PasteScheme from a BeautifulSoup object.
     """
     @staticmethod
-    def extract_data_scheme(paste_soup: BeautifulSoup):
+    def paste_parser(paste_soup: BeautifulSoup):
         header_soup = paste_soup.find('div', {'class': 'paste_box_info'})
         title = header_soup.find('h1').text
         author = header_soup.find('img').next_sibling.string.strip()
@@ -25,8 +25,8 @@ class PasteHandler:
 
         author = PasteHandler.normalize(author)
         title = PasteHandler.normalize(title)
-        paste = PasteScheme(author, content, title, arrow_date)
-        logger.debug('extracted a new paste.', paste.get_db_entry())
+        paste = Paste(author, content, title, arrow_date)
+        logger.debug('extracted a new paste.', paste.get_db_record())
         return paste
 
     @staticmethod

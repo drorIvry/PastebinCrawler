@@ -2,8 +2,8 @@ import requests
 import urllib
 import logging
 from bs4 import BeautifulSoup
-from crawley.DBHandler import DBHandler
-from crawley.PasteHandler import PasteHandler
+from crawley.db_handler import DBHandler
+from crawley.paste_handler import PasteHandler
 
 logger = logging.getLogger(__name__)
 
@@ -37,6 +37,6 @@ class Crawler:
         print('crawling to: {}'.format(crawl_link))
         logger.info('crawling to: {}'.format(crawl_link))
         soup = self.fetch_page(crawl_link)
-        paste = PasteHandler.extract_data_scheme(soup)
+        paste = PasteHandler.paste_parser(soup)
         db = DBHandler()
         db.insert(paste)
